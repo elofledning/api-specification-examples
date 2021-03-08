@@ -1,8 +1,13 @@
+cat <<EOT >> asyncapi-travellers.yml
 asyncapi: 2.0.0
 info:
   title: Travel Recommendation
   version: 0.1.0
   description: Travellers Inc. service for social media platform market possible travel destinations and social interaction with friends and fellow travellers
+servers:
+  mosquitto:
+    url: mqtt://test.mosquitto.org
+    protocol: mqtt
 channels:
   traveller/recommend/demographic:
     subscribe:
@@ -24,16 +29,25 @@ components:
           country:
             type: string
             description: Country of the user
+          messageTimestamp:
+            type: string
+            format: date-time
+            description: Timestamp of message
     friend:
       payload:
         type: object
         properties:
-          userid:
+          userd:
             type: string
             description: Anonymized social media id of user
           friend:
             type: string
             description: Anonymized social media id of friend
-          someplatform:
+          platformId:
             type: string
             description: Social media platform
+          messageTimestamp:
+            type: string
+            format: date-time
+            description: Timestamp of message
+EOT
