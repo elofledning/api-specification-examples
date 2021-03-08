@@ -1,0 +1,39 @@
+asyncapi: 2.0.0
+info:
+  title: Travel Recommendation
+  version: 0.1.0
+  description: Travellers Inc. service for social media platform market possible travel destinations and social interaction with friends and fellow travellers
+channels:
+  traveller/recommend/demographic:
+    subscribe:
+      message:
+        $ref: '#/components/messages/demographic'
+  traveller/recommend/friend:
+    subscribe:
+      message:
+        $ref: '#/components/messages/friend'
+components:
+  messages:
+    demographic:
+      payload:
+        type: object
+        properties:
+          age:
+            type: integer
+            description: Age of the user
+          country:
+            type: string
+            description: Country of the user
+    friend:
+      payload:
+        type: object
+        properties:
+          userid:
+            type: string
+            description: Anonymized social media id of user
+          friend:
+            type: string
+            description: Anonymized social media id of friend
+          someplatform:
+            type: string
+            description: Social media platform
