@@ -28,7 +28,7 @@ paths:
       tags:
       - "traveller"
       summary: "Add a new traveller"
-      description: ""
+      description: "New traveller identified in association to a platform"
       operationId: "addTraveller"
       consumes:
       - "application/json"
@@ -48,7 +48,7 @@ paths:
       tags:
       - "traveller"
       summary: "Update an existing traveller"
-      description: ""
+      description: "Update existing traveller relation and data to platform"
       operationId: "updateTraveller"
       consumes:
       - "application/json"
@@ -92,6 +92,30 @@ paths:
           description: "Invalid ID supplied"
         "404":
           description: "Traveller not found"
+  /platform/{platformId}:
+    get:
+      tags:
+      - "platform"
+      summary: "Get platform by ID"
+      description: "Returns a platform"
+      operationId: "getPlatformById"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "platformId"
+        in: "path"
+        description: "Platform ID"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Platform"
+        "400":
+          description: "Invalid ID supplied"
+        "404":
+          description: "Platform not found"
 definitions:
   Traveller:
     type: "object"
@@ -110,14 +134,4 @@ definitions:
       name:
         type: "string"
       country:
-        type: "string"
-  ApiResponse:
-    type: "object"
-    properties:
-      code:
-        type: "integer"
-        format: "int32"
-      type:
-        type: "string"
-      message:
         type: "string"

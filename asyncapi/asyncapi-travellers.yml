@@ -1,4 +1,3 @@
-cat <<EOT >> asyncapi-travellers.yml
 asyncapi: 2.0.0
 info:
   title: Travel Recommendation
@@ -37,7 +36,7 @@ components:
       payload:
         type: object
         properties:
-          userd:
+          userid:
             type: string
             description: Anonymized social media id of user
           friend:
@@ -50,4 +49,3 @@ components:
             type: string
             format: date-time
             description: Timestamp of message
-EOT
